@@ -128,4 +128,12 @@ module Def (S : Cstubs.Types.TYPE) = struct
     let tv_usec = S.field t "tv_usec" TT.suseconds_t
     let () = S.seal t
   end
+
+  module Itimerval = struct
+    type t = unit
+    let t = S.structure "itimerval"
+    let it_interval = S.field t "it_interval" Timeval.t
+    let it_value = S.field t "it_value" Timeval.t
+    let () = S.seal t
+  end
 end

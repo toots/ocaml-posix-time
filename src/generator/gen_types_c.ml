@@ -1,5 +1,5 @@
 let c_headers = "
-#include <time.h>
+#include <sys/time.h>
 "
 
 let () =
