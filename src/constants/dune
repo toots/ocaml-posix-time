@@ -1,0 +1,5 @@
+(library
+ (name sys_time_constants)
+ (public_name sys-time.constants)
+ (libraries ctypes.stubs))
+

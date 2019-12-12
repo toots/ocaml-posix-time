@@ -1,0 +1,15 @@
+(env
+  (dev
+     (flags (:standard -warn-error -A))))
+
+(library
+ (name sys_time_types)
+ (public_name sys-time.types)
+ (libraries sys-time.constants ctypes.stubs))
+
+(rule
+ (targets sys_time_generated_constants.ml)
+ (deps    (:exec ../generator/exec.sh)
+          (:gen ../generator/gen_constants_c))
+ (action  (with-stdout-to %{targets}
+            (system "%{exec} %{ocaml-config:system} %{gen}"))))

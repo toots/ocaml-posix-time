@@ -1,0 +1,22 @@
+EXCLUDE_QUERY_DIR
+B /Users/toots/.opam/4.08.0/lib/bytes
+B /Users/toots/.opam/4.08.0/lib/ctypes
+B /Users/toots/.opam/4.08.0/lib/integers
+B /Users/toots/.opam/4.08.0/lib/ocaml
+B /Users/toots/.opam/4.08.0/lib/result
+B /Users/toots/.opam/4.08.0/lib/unix-errno
+B ../_build/default/src/.sys_time.objs/byte
+B ../_build/default/src/constants/.sys_time_constants.objs/byte
+B ../_build/default/src/stubs/.sys_time_stubs.objs/byte
+B ../_build/default/src/types/.sys_time_types.objs/byte
+S /Users/toots/.opam/4.08.0/lib/bytes
+S /Users/toots/.opam/4.08.0/lib/ctypes
+S /Users/toots/.opam/4.08.0/lib/integers
+S /Users/toots/.opam/4.08.0/lib/ocaml
+S /Users/toots/.opam/4.08.0/lib/result
+S /Users/toots/.opam/4.08.0/lib/unix-errno
+S .
+S constants
+S stubs
+S types
+FLG -open Sys_time__ -w @a-4-29-40-41-42-44-45-48-58-59-60-40 -strict-sequence -strict-formats -short-paths -keep-locs -warn-error -A

@@ -1,0 +1,20 @@
+opam-version: "2.0"
+name: "sys-socket"
+version: "1.0.0"
+maintainer: "Romain Beauxis <toots@rastageeks.org>"
+homepage: "https://github.com/toots/ocaml-sys-socket"
+authors: "Romain Beauxis <toots@rastageeks.org>"
+bug-reports: "https://github.com/toots/ocaml-sys-socket/issues"
+dev-repo: "git+https://github.com/toots/ocaml-sys-socket.git"
+synopsis: "Ctypes bindings to <sys/time.h>"
+description: """
+This module provides OCaml ctypes bindings to <sys/time.h>
+"""
+license: "MIT"
+depends: [
+  "ocaml"
+  "dune" {>= "1.10"}
+  "ctypes"
+  "unix-errno"
+]
+build: ["dune" "build" "-p" name "-j" jobs]

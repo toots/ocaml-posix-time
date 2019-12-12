@@ -1,0 +1,74 @@
+lib: [
+  "_build/install/default/lib/sys-time/META"
+  "_build/install/default/lib/sys-time/constants/sys_time_constants.a" {"constants/sys_time_constants.a"}
+  "_build/install/default/lib/sys-time/constants/sys_time_constants.cma" {"constants/sys_time_constants.cma"}
+  "_build/install/default/lib/sys-time/constants/sys_time_constants.cmi" {"constants/sys_time_constants.cmi"}
+  "_build/install/default/lib/sys-time/constants/sys_time_constants.cmt" {"constants/sys_time_constants.cmt"}
+  "_build/install/default/lib/sys-time/constants/sys_time_constants.cmx" {"constants/sys_time_constants.cmx"}
+  "_build/install/default/lib/sys-time/constants/sys_time_constants.cmxa" {"constants/sys_time_constants.cmxa"}
+  "_build/install/default/lib/sys-time/constants/sys_time_constants.cmxs" {"constants/sys_time_constants.cmxs"}
+  "_build/install/default/lib/sys-time/constants/sys_time_constants.ml" {"constants/sys_time_constants.ml"}
+  "_build/install/default/lib/sys-time/dune-package"
+  "_build/install/default/lib/sys-time/libsys_time_stubs.a"
+  "_build/install/default/lib/sys-time/opam"
+  "_build/install/default/lib/sys-time/stubs/sys_time_generated_types.ml" {"stubs/sys_time_generated_types.ml"}
+  "_build/install/default/lib/sys-time/stubs/sys_time_stubs.a" {"stubs/sys_time_stubs.a"}
+  "_build/install/default/lib/sys-time/stubs/sys_time_stubs.cma" {"stubs/sys_time_stubs.cma"}
+  "_build/install/default/lib/sys-time/stubs/sys_time_stubs.cmi" {"stubs/sys_time_stubs.cmi"}
+  "_build/install/default/lib/sys-time/stubs/sys_time_stubs.cmt" {"stubs/sys_time_stubs.cmt"}
+  "_build/install/default/lib/sys-time/stubs/sys_time_stubs.cmx" {"stubs/sys_time_stubs.cmx"}
+  "_build/install/default/lib/sys-time/stubs/sys_time_stubs.cmxa" {"stubs/sys_time_stubs.cmxa"}
+  "_build/install/default/lib/sys-time/stubs/sys_time_stubs.cmxs" {"stubs/sys_time_stubs.cmxs"}
+  "_build/install/default/lib/sys-time/stubs/sys_time_stubs.ml" {"stubs/sys_time_stubs.ml"}
+  "_build/install/default/lib/sys-time/stubs/sys_time_stubs__.cmi" {"stubs/sys_time_stubs__.cmi"}
+  "_build/install/default/lib/sys-time/stubs/sys_time_stubs__.cmt" {"stubs/sys_time_stubs__.cmt"}
+  "_build/install/default/lib/sys-time/stubs/sys_time_stubs__.cmx" {"stubs/sys_time_stubs__.cmx"}
+  "_build/install/default/lib/sys-time/stubs/sys_time_stubs__.ml" {"stubs/sys_time_stubs__.ml"}
+  "_build/install/default/lib/sys-time/stubs/sys_time_stubs__Sys_time_generated_types.cmi" {"stubs/sys_time_stubs__Sys_time_generated_types.cmi"}
+  "_build/install/default/lib/sys-time/stubs/sys_time_stubs__Sys_time_generated_types.cmt" {"stubs/sys_time_stubs__Sys_time_generated_types.cmt"}
+  "_build/install/default/lib/sys-time/stubs/sys_time_stubs__Sys_time_generated_types.cmx" {"stubs/sys_time_stubs__Sys_time_generated_types.cmx"}
+  "_build/install/default/lib/sys-time/sys_time.a"
+  "_build/install/default/lib/sys-time/sys_time.cma"
+  "_build/install/default/lib/sys-time/sys_time.cmi"
+  "_build/install/default/lib/sys-time/sys_time.cmt"
+  "_build/install/default/lib/sys-time/sys_time.cmti"
+  "_build/install/default/lib/sys-time/sys_time.cmx"
+  "_build/install/default/lib/sys-time/sys_time.cmxa"
+  "_build/install/default/lib/sys-time/sys_time.cmxs"
+  "_build/install/default/lib/sys-time/sys_time.ml"
+  "_build/install/default/lib/sys-time/sys_time.mli"
+  "_build/install/default/lib/sys-time/sys_time__.cmi"
+  "_build/install/default/lib/sys-time/sys_time__.cmt"
+  "_build/install/default/lib/sys-time/sys_time__.cmx"
+  "_build/install/default/lib/sys-time/sys_time__.ml"
+  "_build/install/default/lib/sys-time/sys_time__Sys_time_generated_stubs.cmi"
+  "_build/install/default/lib/sys-time/sys_time__Sys_time_generated_stubs.cmt"
+  "_build/install/default/lib/sys-time/sys_time__Sys_time_generated_stubs.cmx"
+  "_build/install/default/lib/sys-time/sys_time_generated_stubs.ml"
+  "_build/install/default/lib/sys-time/types/sys_time_generated_constants.ml" {"types/sys_time_generated_constants.ml"}
+  "_build/install/default/lib/sys-time/types/sys_time_types.a" {"types/sys_time_types.a"}
+  "_build/install/default/lib/sys-time/types/sys_time_types.cma" {"types/sys_time_types.cma"}
+  "_build/install/default/lib/sys-time/types/sys_time_types.cmi" {"types/sys_time_types.cmi"}
+  "_build/install/default/lib/sys-time/types/sys_time_types.cmt" {"types/sys_time_types.cmt"}
+  "_build/install/default/lib/sys-time/types/sys_time_types.cmti" {"types/sys_time_types.cmti"}
+  "_build/install/default/lib/sys-time/types/sys_time_types.cmx" {"types/sys_time_types.cmx"}
+  "_build/install/default/lib/sys-time/types/sys_time_types.cmxa" {"types/sys_time_types.cmxa"}
+  "_build/install/default/lib/sys-time/types/sys_time_types.cmxs" {"types/sys_time_types.cmxs"}
+  "_build/install/default/lib/sys-time/types/sys_time_types.ml" {"types/sys_time_types.ml"}
+  "_build/install/default/lib/sys-time/types/sys_time_types.mli" {"types/sys_time_types.mli"}
+  "_build/install/default/lib/sys-time/types/sys_time_types__.cmi" {"types/sys_time_types__.cmi"}
+  "_build/install/default/lib/sys-time/types/sys_time_types__.cmt" {"types/sys_time_types__.cmt"}
+  "_build/install/default/lib/sys-time/types/sys_time_types__.cmx" {"types/sys_time_types__.cmx"}
+  "_build/install/default/lib/sys-time/types/sys_time_types__.ml" {"types/sys_time_types__.ml"}
+  "_build/install/default/lib/sys-time/types/sys_time_types__Sys_time_generated_constants.cmi" {"types/sys_time_types__Sys_time_generated_constants.cmi"}
+  "_build/install/default/lib/sys-time/types/sys_time_types__Sys_time_generated_constants.cmt" {"types/sys_time_types__Sys_time_generated_constants.cmt"}
+  "_build/install/default/lib/sys-time/types/sys_time_types__Sys_time_generated_constants.cmx" {"types/sys_time_types__Sys_time_generated_constants.cmx"}
+]
+doc: [
+  "_build/install/default/doc/sys-time/CHANGES"
+  "_build/install/default/doc/sys-time/LICENSE"
+  "_build/install/default/doc/sys-time/README.md"
+]
+stublibs: [
+  "_build/install/default/lib/stublibs/dllsys_time_stubs.so"
+]
