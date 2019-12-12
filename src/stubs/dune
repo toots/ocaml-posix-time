@@ -9,7 +9,5 @@
 
 (rule
  (targets sys_time_generated_types.ml)
- (deps    (:exec ../generator/exec.sh)
-          (:gen ../generator/gen_types_c))
  (action  (with-stdout-to %{targets}
-            (system "%{exec} %{ocaml-config:system} %{gen}"))))
+            (run ../generator/gen_types_c))))
