@@ -1,5 +1,8 @@
 open Ctypes
 
+val fd_setsize: int
+val fd_set_len: int
+
 module Types : sig
   type time
   val int64_of_time : time -> int64

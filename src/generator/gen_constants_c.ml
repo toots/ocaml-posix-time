@@ -3,6 +3,7 @@ let c_headers = "
 
 #define TIME_T_LEN sizeof(time_t)
 #define SUSECONDS_T_LEN sizeof(suseconds_t)
+#define FD_SET_LEN sizeof(fd_set)
 "
 
 let () =

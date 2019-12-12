@@ -1,6 +1,6 @@
-open Ctypes
-
 module Constants = Sys_time_constants.Def(Sys_time_generated_constants)
+
+include Constants
 
 module type Time = sig
   type time
