@@ -14,4 +14,4 @@ jobs:
     - name: Install locally
       run: opam pin -y add .
     - name: Run tests
-      run: dune runtest
+      run: eval $(opam env) && dune runtest
