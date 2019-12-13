@@ -136,4 +136,11 @@ module Def (S : Cstubs.Types.TYPE) = struct
     let it_value = S.field t "it_value" Timeval.t
     let () = S.seal t
   end
+
+  module FdSet = struct
+    type t = unit
+    let t = S.structure "fd_set"
+    let fds_bits = S.field t "fds_bits" (S.array fds_bits_len S.int)
+    let () = S.seal t
+  end
 end

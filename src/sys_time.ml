@@ -83,29 +83,31 @@ let gettimeofday () =
 let select r w e timeval =
   Errno_unix.with_unix_exn (fun () ->
     Errno_unix.raise_on_errno (fun () ->
-      if List.length r > Sys_time_types.fd_setsize then
-        failwith "too many read sockets!";
-      if List.length w > Sys_time_types.fd_setsize then
-        failwith "too many write sockets!";
-      if List.length e > Sys_time_types.fd_setsize then
-        failwith "too many exception sockets!";
-      let nfds =
-        List.length r + List.length w + List.length e
-      in
+      let maxfd = ref (-1) in
       let mk_fd_set l =
         let set =
-          to_voidp 
-            (allocate_n char ~count:Sys_time_types.fd_set_len)
+          allocate_n Types.FdSet.t ~count:1
         in 
+        fd_zero set;
         List.iter (fun fd ->
-          fd_set (Obj.magic fd) set) l;
+          let fd = Obj.magic fd in
+          if fd > Sys_time_types.fd_setsize then
+            failwith "invalid Unix.file_descriptor!";
+          if fd > !maxfd then maxfd := fd;
+          fd_set fd set) l;
         set
      in
      let r_set = mk_fd_set r in
      let w_set = mk_fd_set w in
      let e_set = mk_fd_set e in
-     let timeval = from_timeval timeval in
-     match select nfds r_set w_set e_set (addr timeval) with
+     let timeval =
+       match timeval with
+         | None ->
+              from_voidp Types.Timeval.t null
+         | Some timeval ->
+              addr (from_timeval timeval)
+     in
+     match select (!maxfd+1) r_set w_set e_set timeval with
        | x when x < 0 -> None
        | _ ->
          let get_fd_set l fd_set =

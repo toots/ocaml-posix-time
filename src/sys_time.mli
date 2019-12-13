@@ -22,6 +22,6 @@ val gettimeofday : unit -> timeval
 val select : Unix.file_descr list ->
   Unix.file_descr list ->
   Unix.file_descr list ->
-  timeval -> Unix.file_descr list * Unix.file_descr list * Unix.file_descr list
+  timeval option -> Unix.file_descr list * Unix.file_descr list * Unix.file_descr list
 
 val utimes: string -> timeval -> unit

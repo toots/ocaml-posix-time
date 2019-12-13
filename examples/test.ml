@@ -33,16 +33,32 @@ let () =
   let timer = setitimer `Real timer1 in
   Printf.printf "setitimer: %s\n%!"
     (sprint_itimerval timer);
+
   let timer = getitimer `Real in
   Printf.printf "getitimer: %s\n%!"
     (sprint_itimerval timer);
+
   let timer = setitimer `Real timer2 in
   Printf.printf "setitimer: %s\n%!"
     (sprint_itimerval timer);
+
   let timer = setitimer `Real timer1 in
   Printf.printf "setitimer: %s\n%!"
     (sprint_itimerval timer);
+
   Printf.printf "gettimeofday: %s\n%!"
     (sprint_timeval (gettimeofday ()));
+
   Printf.printf "Sleeping 1s..\n%!";
-  ignore(select [] [] [] {tv_sec=1L;tv_usec=0L})
+  ignore(select [] [] [] (Some {tv_sec=1L;tv_usec=0L}));
+
+  let (r, w) = Unix.pipe () in
+  let th = Thread.create (fun () ->
+    match select [r] [] [] None with
+      | [x], [], [] when x = r ->
+          Printf.printf "Done waiting on read socket!"
+      | _ -> assert false) ()
+  in
+  ignore(Unix.write w (Bytes.of_string " ") 0 1);
+  Thread.join th 
+   
