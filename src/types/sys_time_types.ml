@@ -2,6 +2,11 @@ module Constants = Sys_time_constants.Def(Sys_time_generated_constants)
 
 include Constants
 
+type fd_set = unit Ctypes.abstract
+let fd_set =
+  Ctypes.abstract ~name:"fd_set" ~size:fd_set_size
+                  ~alignment:fd_set_alignment
+
 module type Time = sig
   type time
   val int64_of_time : time -> int64
@@ -134,12 +139,6 @@ module Def (S : Cstubs.Types.TYPE) = struct
     let t = S.structure "itimerval"
     let it_interval = S.field t "it_interval" Timeval.t
     let it_value = S.field t "it_value" Timeval.t
-    let () = S.seal t
-  end
-
-  module FdSet = struct
-    type t = unit
-    let t = S.structure "fd_set"
     let () = S.seal t
   end
 end

@@ -86,7 +86,7 @@ let select r w e timeval =
       let maxfd = ref (-1) in
       let mk_fd_set l =
         let set =
-          allocate_n Types.FdSet.t ~count:1
+          allocate_n Sys_time_types.fd_set ~count:1
         in 
         fd_zero set;
         List.iter (fun fd ->

@@ -5,4 +5,6 @@ module Def (S : Cstubs.Types.TYPE) = struct
   let time_len = S.constant "TIME_T_LEN" S.int
   let suseconds_len = S.constant "SUSECONDS_T_LEN" S.int
   let fd_setsize = S.constant "FD_SETSIZE" S.int
+  let fd_set_size = S.constant "FD_SET_SIZE" S.int
+  let fd_set_alignment = S.constant "FD_SET_ALIGNMENT" S.int
 end

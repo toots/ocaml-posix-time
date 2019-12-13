@@ -4,6 +4,8 @@ val itimer_real: int
 val itimer_virtual: int
 val itimer_prof: int
 
+type fd_set
+val fd_set : fd_set typ
 val fd_setsize: int
 
 module Types : sig
@@ -38,9 +40,4 @@ module Def (S : Cstubs.Types.TYPE) : sig
     val it_interval : (Timeval.t structure, t structure) S.field
     val it_value : (Timeval.t structure, t structure) S.field
   end
-
-  module FdSet : sig
-    type t
-    val t : t structure S.typ
-  end 
 end

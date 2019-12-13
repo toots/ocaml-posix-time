@@ -12,12 +12,12 @@ module Def (F : Cstubs.FOREIGN) = struct
 
   let gettimeofday = foreign "gettimeofday" (ptr Timeval.t @-> ptr void @-> (returning int))  
   
-  let fd_zero = foreign "ocaml_sys_time_fd_zero" (ptr FdSet.t @-> (returning void))
-  let fd_set = foreign "ocaml_sys_time_fd_set" (int @-> ptr FdSet.t @-> (returning void))
-  let fd_isset = foreign "ocaml_sys_time_fd_isset" (int @-> ptr FdSet.t @-> (returning int))
-  let fd_clr = foreign "ocaml_sys_time_fd_clr" (int @-> ptr FdSet.t @-> (returning void))
+  let fd_zero = foreign "ocaml_sys_time_fd_zero" (ptr Sys_time_types.fd_set @-> (returning void))
+  let fd_set = foreign "ocaml_sys_time_fd_set" (int @-> ptr Sys_time_types.fd_set @-> (returning void))
+  let fd_isset = foreign "ocaml_sys_time_fd_isset" (int @-> ptr Sys_time_types.fd_set @-> (returning int))
+  let fd_clr = foreign "ocaml_sys_time_fd_clr" (int @-> ptr Sys_time_types.fd_set @-> (returning void))
 
-  let select = foreign "select" (int @-> ptr FdSet.t @-> ptr FdSet.t @-> ptr FdSet.t @-> ptr Timeval.t @-> (returning int))
+  let select = foreign "select" (int @-> ptr Sys_time_types.fd_set @-> ptr Sys_time_types.fd_set @-> ptr Sys_time_types.fd_set @-> ptr Timeval.t @-> (returning int))
 
   let  utimes = foreign "utimes" (string @-> ptr Timeval.t @-> (returning int))
 end
