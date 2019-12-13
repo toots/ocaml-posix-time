@@ -42,6 +42,5 @@ module Def (S : Cstubs.Types.TYPE) : sig
   module FdSet : sig
     type t
     val t : t structure S.typ
-    val fds_bits : (int carray, t structure) S.field
   end 
 end
