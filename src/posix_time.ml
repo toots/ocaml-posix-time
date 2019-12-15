@@ -25,15 +25,15 @@ let int_of_itimer = function
 
 let to_timeval timeval =
   let get f = getf timeval f in
-  { tv_sec  = Posix_time_types.Types.int64_of_time (get Types.Timeval.tv_sec);
-    tv_usec = Posix_time_types.Types.int64_of_suseconds (get Types.Timeval.tv_usec) }
+  { tv_sec  = PosixTypes.Time.to_int64 (get Types.Timeval.tv_sec);
+    tv_usec = PosixTypes.Suseconds.to_int64 (get Types.Timeval.tv_usec) }
 
 let from_timeval {tv_sec;tv_usec} =
   let timeval = make Types.Timeval.t in
   setf timeval Types.Timeval.tv_sec
-    (Posix_time_types.Types.time_of_int64 tv_sec);
+    (PosixTypes.Time.of_int64 tv_sec);
   setf timeval Types.Timeval.tv_usec
-    (Posix_time_types.Types.suseconds_of_int64 tv_usec);
+    (PosixTypes.Suseconds.of_int64 tv_usec);
   timeval
 
 let to_itimerval itimerval =

@@ -1,8 +1,6 @@
 let c_headers = "
 #include <sys/time.h>
 
-#define TIME_T_LEN sizeof(time_t)
-#define SUSECONDS_T_LEN sizeof(suseconds_t)
 #define FD_SET_SIZE sizeof(fd_set)
 #define FD_SET_ALIGNMENT offsetof(struct { char c; fd_set x; }, x)
 "
