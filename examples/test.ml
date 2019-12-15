@@ -3,14 +3,14 @@ open Posix_time
 let sprint_timespec {tv_sec; tv_nsec} =
   Printf.sprintf "tv_sec: %Li, tv_nsec: %Li" tv_sec tv_nsec
 
-let sprint_timeval {tv_sec; tv_usec} =
+let sprint_timeval {Sys.tv_sec; tv_usec} =
   Printf.sprintf "tv_sec: %Li, tv_usec: %Li" tv_sec tv_usec
 
-let sprint_itimerval {it_interval;it_value} =
+let sprint_itimerval {Sys.it_interval;it_value} =
   Printf.sprintf "it_interval: { %s } , it_value = { %s }" 
     (sprint_timeval it_interval) (sprint_timeval it_value)
 
-let timer1 = {
+let timer1 = {Sys.
   it_interval = {
     tv_sec = 1982L;
     tv_usec = 0L
@@ -21,7 +21,7 @@ let timer1 = {
   }
 }
 
-let timer2 = {
+let timer2 = {Sys.
   it_interval = {
     tv_sec = 0L;
     tv_usec = 0L
@@ -33,31 +33,31 @@ let timer2 = {
 }
 
 let () =
-  let timer = setitimer `Real timer1 in
+  let timer = Sys.setitimer `Real timer1 in
   Printf.printf "setitimer: %s\n%!"
     (sprint_itimerval timer);
 
-  let timer = getitimer `Real in
+  let timer = Sys.getitimer `Real in
   Printf.printf "getitimer: %s\n%!"
     (sprint_itimerval timer);
 
-  let timer = setitimer `Real timer2 in
+  let timer = Sys.setitimer `Real timer2 in
   Printf.printf "setitimer: %s\n%!"
     (sprint_itimerval timer);
 
-  let timer = setitimer `Real timer1 in
+  let timer = Sys.setitimer `Real timer1 in
   Printf.printf "setitimer: %s\n%!"
     (sprint_itimerval timer);
 
   Printf.printf "gettimeofday: %s\n%!"
-    (sprint_timeval (gettimeofday ()));
+    (sprint_timeval (Sys.gettimeofday ()));
 
   Printf.printf "Sleeping 10s..\n%!";
   nanosleep {tv_sec=1L;tv_nsec=0L};
 
   let (r, w) = Unix.pipe () in
   let th = Thread.create (fun () ->
-    match select [r] [] [] None with
+    match Sys.select [r] [] [] None with
       | [x], [], [] when x = r ->
           Printf.printf "Done waiting on read socket!\n%!"
       | _ -> assert false) ()
