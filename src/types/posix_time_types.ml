@@ -1,4 +1,4 @@
-module Constants = Sys_time_constants.Def(Sys_time_generated_constants)
+module Constants = Posix_time_constants.Def(Posix_time_generated_constants)
 
 include Constants
 

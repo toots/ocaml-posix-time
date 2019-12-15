@@ -1,12 +1,12 @@
 (executable
  (name gen_stubs)
  (modules gen_stubs)
- (libraries sys-time.stubs ctypes.stubs))
+ (libraries posix-time.stubs ctypes.stubs))
 
 (executable
  (name gen_types_c)
  (modules gen_types_c)
- (libraries sys-time.types ctypes.stubs))
+ (libraries posix-time.types ctypes.stubs))
 
 (rule
  (targets gen_types.c)
@@ -20,7 +20,7 @@
 (executable
  (name gen_constants_c)
  (modules gen_constants_c)
- (libraries sys-time.constants ctypes.stubs))
+ (libraries posix-time.constants ctypes.stubs))
 
 (rule
  (targets gen_constants.c)

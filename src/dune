@@ -3,16 +3,16 @@
      (flags (:standard -warn-error -A))))
 
 (library
- (name         sys_time)
- (public_name  sys-time)
- (synopsis    "sys-time provides access to the features exposed in sys/time.h")
- (c_names      sys_time_generated_stubs)
- (libraries    unix unix-errno.unix ctypes sys-time.types sys-time.stubs))
+ (name         posix_time)
+ (public_name  posix-time)
+ (synopsis    "posix-time provides access to the features exposed in sys/time.h")
+ (c_names      posix_time_generated_stubs)
+ (libraries    unix unix-errno.unix ctypes posix-time.types posix-time.stubs))
 
 (rule
- (targets sys_time_generated_stubs.ml)
+ (targets posix_time_generated_stubs.ml)
  (action  (run ./generator/gen_stubs.exe ml %{targets})))
 
 (rule
- (targets sys_time_generated_stubs.c)
+ (targets posix_time_generated_stubs.c)
  (action  (run ./generator/gen_stubs.exe c %{targets})))

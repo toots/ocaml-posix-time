@@ -1,19 +1,19 @@
 let c_headers = "
 #include <sys/time.h>
 
-static inline void ocaml_sys_time_fd_zero(fd_set *fdset) {
+static inline void ocaml_posix_time_fd_zero(fd_set *fdset) {
   FD_ZERO(fdset);
 }
 
-static inline void ocaml_sys_time_fd_set(int fd, fd_set *fdset) {
+static inline void ocaml_posix_time_fd_set(int fd, fd_set *fdset) {
   FD_SET(fd, fdset);
 }
 
-static inline int ocaml_sys_time_fd_isset(int fd, fd_set *fdset) {
+static inline int ocaml_posix_time_fd_isset(int fd, fd_set *fdset) {
   return FD_ISSET(fd, fdset);
 }
 
-static inline void ocaml_sys_time_fd_clr(int fd, fd_set *fdset) {
+static inline void ocaml_posix_time_fd_clr(int fd, fd_set *fdset) {
   FD_CLR(fd, fdset);
 }
 "
@@ -33,6 +33,6 @@ let () =
          Cstubs.write_c
       | _    -> assert false
   in
-  fn ~concurrency:Cstubs.unlocked format ~prefix:"sys_time" (module Sys_time_stubs.Def);
+  fn ~concurrency:Cstubs.unlocked format ~prefix:"posix_time" (module Posix_time_stubs.Def);
   Format.pp_print_flush format ();
   close_out oc

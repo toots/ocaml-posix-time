@@ -1,4 +1,4 @@
-open Sys_time
+open Posix_time
 
 let sprint_timeval {tv_sec; tv_usec} =
   Printf.sprintf "tv_sec: %Li, tv_usec: %Li" tv_sec tv_usec

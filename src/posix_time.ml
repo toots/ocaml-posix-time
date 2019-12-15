@@ -1,6 +1,6 @@
 open Ctypes
 
-include Sys_time_stubs.Def(Sys_time_generated_stubs)
+include Posix_time_stubs.Def(Posix_time_generated_stubs)
 
 type timeval = {
   tv_sec:  int64;
@@ -19,21 +19,21 @@ type itimer = [
 ]
 
 let int_of_itimer = function
-  | `Real -> Sys_time_types.itimer_real
-  | `Virtual -> Sys_time_types.itimer_virtual
-  | `Prof -> Sys_time_types.itimer_prof
+  | `Real -> Posix_time_types.itimer_real
+  | `Virtual -> Posix_time_types.itimer_virtual
+  | `Prof -> Posix_time_types.itimer_prof
 
 let to_timeval timeval =
   let get f = getf timeval f in
-  { tv_sec  = Sys_time_types.Types.int64_of_time (get Types.Timeval.tv_sec);
-    tv_usec = Sys_time_types.Types.int64_of_suseconds (get Types.Timeval.tv_usec) }
+  { tv_sec  = Posix_time_types.Types.int64_of_time (get Types.Timeval.tv_sec);
+    tv_usec = Posix_time_types.Types.int64_of_suseconds (get Types.Timeval.tv_usec) }
 
 let from_timeval {tv_sec;tv_usec} =
   let timeval = make Types.Timeval.t in
   setf timeval Types.Timeval.tv_sec
-    (Sys_time_types.Types.time_of_int64 tv_sec);
+    (Posix_time_types.Types.time_of_int64 tv_sec);
   setf timeval Types.Timeval.tv_usec
-    (Sys_time_types.Types.suseconds_of_int64 tv_usec);
+    (Posix_time_types.Types.suseconds_of_int64 tv_usec);
   timeval
 
 let to_itimerval itimerval =
@@ -86,12 +86,12 @@ let select r w e timeval =
       let maxfd = ref (-1) in
       let mk_fd_set l =
         let set =
-          allocate_n Sys_time_types.fd_set ~count:1
+          allocate_n Posix_time_types.fd_set ~count:1
         in 
         fd_zero set;
         List.iter (fun fd ->
           let fd = Obj.magic fd in
-          if fd > Sys_time_types.fd_setsize then
+          if fd > Posix_time_types.fd_setsize then
             failwith "invalid Unix.file_descriptor!";
           if fd > !maxfd then maxfd := fd;
           fd_set fd set) l;

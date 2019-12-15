@@ -1,5 +1,5 @@
 (library
- (name sys_time_constants)
- (public_name sys-time.constants)
+ (name posix_time_constants)
+ (public_name posix-time.constants)
  (libraries ctypes.stubs))
 

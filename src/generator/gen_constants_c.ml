@@ -14,6 +14,6 @@ let () =
     Format.formatter_of_out_channel oc
   in
   Format.fprintf format "%s@\n" c_headers;
-  Cstubs.Types.write_c format (module Sys_time_constants.Def);
+  Cstubs.Types.write_c format (module Posix_time_constants.Def);
   Format.pp_print_flush format ();
   close_out oc

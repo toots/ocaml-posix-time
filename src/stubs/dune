@@ -3,11 +3,11 @@
      (flags (:standard -warn-error -A))))
 
 (library
- (name sys_time_stubs)
- (public_name sys-time.stubs)
- (libraries sys-time.types ctypes.stubs))
+ (name posix_time_stubs)
+ (public_name posix-time.stubs)
+ (libraries posix-time.types ctypes.stubs))
 
 (rule
- (targets sys_time_generated_types.ml)
+ (targets posix_time_generated_types.ml)
  (action  (with-stdout-to %{targets}
             (run ../generator/gen_types_c))))

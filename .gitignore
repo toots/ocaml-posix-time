@@ -4,3 +4,4 @@ _build
 *.native
 _tests
 .merlin
+*.install

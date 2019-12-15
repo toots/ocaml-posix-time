@@ -1,6 +1,6 @@
 (executable
  (name test)
- (libraries sys-time threads))
+ (libraries posix-time threads))
 
 (alias
  (name runtest)
