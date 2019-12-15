@@ -6,7 +6,7 @@ homepage: "https://github.com/toots/ocaml-posix-time"
 authors: "Romain Beauxis <toots@rastageeks.org>"
 bug-reports: "https://github.com/toots/ocaml-posix-time/issues"
 dev-repo: "git+https://github.com/toots/ocaml-posix-time.git"
-synopsis: "Ctypes bindings to <sys/time.h>"
+synopsis: "Ctypes bindings to POSIX's time-related APIs"
 description: """
 This module provides OCaml ctypes bindings to various POSIX time APIs
 """

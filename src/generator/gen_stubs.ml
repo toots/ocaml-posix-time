@@ -1,4 +1,5 @@
 let c_headers = "
+#include <time.h>
 #include <sys/time.h>
 
 static inline void ocaml_posix_time_fd_zero(fd_set *fdset) {
