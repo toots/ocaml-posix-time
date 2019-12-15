@@ -7,6 +7,12 @@ module Def (F : Cstubs.FOREIGN) = struct
 
   open Types
 
+  let clock_getres = foreign "clock_getres" (Posix_time_types.clockid_t @-> ptr Timespec.t @-> (returning int))
+  let clock_gettime = foreign "clock_gettime" (Posix_time_types.clockid_t @-> ptr Timespec.t @-> (returning int))
+  let clock_settime = foreign "clock_settime" (Posix_time_types.clockid_t @-> ptr Timespec.t @-> (returning int))
+
+  let nanosleep = foreign "nanosleep" (ptr Timespec.t @-> ptr void @-> (returning int))
+
   let getitimer = foreign "getitimer" (int @-> ptr Itimerval.t @-> (returning int))
   let setitimer = foreign "setitimer" (int @-> ptr Itimerval.t @-> ptr Itimerval.t @-> (returning int))
 
