@@ -2,6 +2,44 @@ open Ctypes
 
 include Posix_time_stubs.Def(Posix_time_generated_stubs)
 
+type tm = {
+  tm_sec:   int;
+  tm_min:   int;
+  tm_hour:  int;
+  tm_mday:  int;
+  tm_mon:   int;
+  tm_year:  int;
+  tm_wday:  int;
+  tm_yday:  int;
+  tm_isdst: bool
+}
+
+let to_tm tm =
+  let get f = getf tm f in
+  { tm_sec = get Types.Tm.tm_sec;
+    tm_min = get Types.Tm.tm_min;
+    tm_hour = get Types.Tm.tm_hour;
+    tm_mday = get Types.Tm.tm_mday;
+    tm_mon = get Types.Tm.tm_mon;
+    tm_year = get Types.Tm.tm_year;
+    tm_wday = get Types.Tm.tm_wday;
+    tm_yday = get Types.Tm.tm_yday;
+    tm_isdst = get Types.Tm.tm_isdst = 0 }
+
+let from_tm tm =
+  let _tm = make Types.Tm.t in
+  setf _tm Types.Tm.tm_sec tm.tm_sec;
+  setf _tm Types.Tm.tm_min tm.tm_min;
+  setf _tm Types.Tm.tm_hour tm.tm_hour;
+  setf _tm Types.Tm.tm_mday tm.tm_mday;
+  setf _tm Types.Tm.tm_mon tm.tm_mon;
+  setf _tm Types.Tm.tm_year tm.tm_year;
+  setf _tm Types.Tm.tm_wday tm.tm_wday;
+  setf _tm Types.Tm.tm_yday tm.tm_yday;
+  setf _tm Types.Tm.tm_isdst (if tm.tm_isdst then 1 else 0);
+  _tm
+
+
 type timespec = {
   tv_sec:  int64;
   tv_nsec: int64
@@ -41,6 +79,8 @@ let from_timespec {tv_sec;tv_nsec} =
     (Signed.Long.of_int64 tv_nsec);
   timespec
 
+let asctime tm = asctime (addr (from_tm tm))
+
 let clock_getres clock =
   Errno_unix.with_unix_exn (fun () ->
     Errno_unix.raise_on_errno (fun () ->
@@ -77,6 +117,34 @@ let clock_settime clock timespec =
       match clock_settime clock_id (addr timespec)  with
         | 0 -> Some ()
         | _ -> None))
+
+let ctime time =
+  ctime (PosixTypes.Time.of_int64 time)
+
+let gmtime time =
+  Errno_unix.with_unix_exn (fun () ->
+    Errno_unix.raise_on_errno (fun () ->
+      let time = PosixTypes.Time.of_int64 time in
+      match gmtime time with
+        | ptr when is_null ptr -> None
+        | ptr -> Some (to_tm (!@ ptr))))
+
+let localtime time =
+  Errno_unix.with_unix_exn (fun () ->
+    Errno_unix.raise_on_errno (fun () ->
+      let time = PosixTypes.Time.of_int64 time in
+      match localtime time with
+        | ptr when is_null ptr -> None
+        | ptr -> Some (to_tm (!@ ptr))))
+
+let mktime tm =
+  Errno_unix.with_unix_exn (fun () ->
+    Errno_unix.raise_on_errno (fun () ->
+      let tm = from_tm tm in 
+      let time = mktime (addr tm) in
+      match PosixTypes.Time.to_int64 time with
+        | -1L -> None
+        | time -> Some time))
 
 let nanosleep timespec =
   Errno_unix.with_unix_exn (fun () ->

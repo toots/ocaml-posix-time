@@ -20,6 +20,7 @@ val clock_thread_cputime_id: int
 module Def (S : Cstubs.Types.TYPE) : sig 
   module Tm : sig
     type t
+    val t : t structure S.typ
     val tm_sec   : (int, t structure) S.field
     val tm_min   : (int, t structure) S.field
     val tm_hour  : (int, t structure) S.field
@@ -34,7 +35,7 @@ module Def (S : Cstubs.Types.TYPE) : sig
   module Timespec : sig
     type t
     val t : t structure S.typ
-    val tv_sec : (PosixTypes.time_t, t structure) S.field
+    val tv_sec  : (PosixTypes.time_t, t structure) S.field
     val tv_nsec : (Signed.long, t structure) S.field
   end
 
@@ -49,6 +50,6 @@ module Def (S : Cstubs.Types.TYPE) : sig
     type t
     val t : t structure S.typ
     val it_interval : (Timeval.t structure, t structure) S.field
-    val it_value : (Timeval.t structure, t structure) S.field
+    val it_value    : (Timeval.t structure, t structure) S.field
   end
 end

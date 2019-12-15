@@ -3,6 +3,18 @@
  * and: https://pubs.opengroup.org/onlinepubs/7908799/xsh/systime.h.html
  * for an explanation about the data structures and functions. *)
 
+type tm = {
+  tm_sec:   int;
+  tm_min:   int;
+  tm_hour:  int;
+  tm_mday:  int;
+  tm_mon:   int;
+  tm_year:  int;
+  tm_wday:  int;
+  tm_yday:  int;
+  tm_isdst: bool
+}
+
 (* Size of [tv_sec] and [tv_nsec] are architecture-specific. We provide
  * here the largest size possible in order to make computations as safe
  * as possible from overflows. However, you should make sure that [tv_nsec]
@@ -20,9 +32,17 @@ type clock = [
   | `Thread_cputime
 ]
 
+val asctime : tm -> string
+
 val clock_getres: clock -> timespec
 val clock_gettime: clock -> timespec
 val clock_settime: clock -> timespec -> unit
+
+val ctime : int64 -> string
+
+val gmtime : int64 -> tm
+val localtime : int64 -> tm
+val mktime: tm -> int64
 
 val nanosleep : timespec -> unit
 
