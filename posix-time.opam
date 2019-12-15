@@ -8,7 +8,7 @@ bug-reports: "https://github.com/toots/ocaml-posix-time/issues"
 dev-repo: "git+https://github.com/toots/ocaml-posix-time.git"
 synopsis: "Ctypes bindings to <sys/time.h>"
 description: """
-This module provides OCaml ctypes bindings to <sys/time.h>
+This module provides OCaml ctypes bindings to various POSIX time APIs
 """
 license: "MIT"
 depends: [
